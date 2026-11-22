@@ -1,0 +1,30 @@
+/* ===== YÜZLER — Açılış (boot) ekranı mobil düzeltmesi =====
+   Sorun: "YÜZLER_DÉMARRER_v2.6" başlığı ile sağdaki "NOYAU_VERSEAU" etiketi mobilde üst üste biniyordu.
+   Çözüm: satır sığmazsa etiket alt satıra geçer; yazı boyutu ekran genişliğine göre küçülür (clamp).
+   Masaüstü (769px+) görünümü değişmez. Bu blok index.html'deki EN SON <style> olmalı. */
+@media (max-width: 768px) {
+  .terminal-header {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 10px;
+    min-width: 0;
+  }
+  .terminal-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    font-size: clamp(0.66rem, 3.4vw, 0.8rem);
+    letter-spacing: clamp(0px, 0.2vw, 0.5px);
+  }
+  .terminal-title #boot-title-txt { min-width: 0; overflow-wrap: anywhere; }
+
+  .terminal-header > div:last-child {          /* NOYAU_VERSEAU / KOVA_ÇEKIRDEĞI */
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    margin-inline-start: auto;
+    text-align: end;
+    font-size: clamp(0.58rem, 2.9vw, 0.68rem) !important;
+    overflow-wrap: anywhere;
+  }
+}
